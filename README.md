@@ -12,18 +12,18 @@ While this specific implementation utilizes Natural Language Processing (NLP) an
 ### **Pipeline Architecture**
 The codebase is modularized into three core analytical tracks to ensure reproducibility and clean execution:
 
-#### **1. `06_Code_Sentiment_FinBERT.py` (Text Processing & Sentiment Engine)**
+#### **1. `Code_Sentiment_FinBERT.py` (Text Processing & Sentiment Engine)**
 * Cleans raw text inputs, stripping HTML artifacts and applying regular expressions for robust sentence tokenization.
 * Implements a pre-trained transformer model (`ProsusAI/finbert`) via the Hugging Face pipeline.
 * Calculates a nuanced, sentence-length-weighted net sentiment score for entire textual sections to prevent short, highly polarized sentences from skewing aggregated results.
 
-#### **2. `07_Code_Cluster_Sentiment.py` (Thematic Clustering Pipeline)**
+#### **2. `Code_Cluster_Sentiment.py` (Thematic Clustering Pipeline)**
 * Utilizes `spaCy` to extract meaningful lemmas (nouns and adjectives) while filtering out boilerplate and stopwords.
 * Embeds extracted vocabulary into mathematical vectors using `SentenceTransformers` (`all-MiniLM-L6-v2`).
 * Applies K-Means clustering to group semantically similar terminology into distinct thematic clusters.
 * Maps these thematic clusters back to the original text corpus and scores the contextual sentences, allowing for highly granular, entity-x-year-x-cluster sentiment tracking.
 
-#### **3. `08_Code_Charts_Visualization.py` (Data Aggregation & Visual Translation)**
+#### **3. `Code_Charts_Visualization.py` (Data Aggregation & Visual Translation)**
 * Processes and aggregates the high-dimensional outputs from the modeling scripts using `pandas` and `numpy`.
 * Utilizes `matplotlib` and `seaborn` to generate stakeholder-ready visualizations, including:
   * Waterfall charts mapping sentiment deterioration.
